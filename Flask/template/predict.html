@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Employee Performance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://dev-data-enpointe.s3.ap-southeast-1.amazonaws.com/images/7423c789-7c35-464c-94df-8630a9bcc4ed.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Predict Employee Performance</h1>
+    
+          
+        <form action="/predict" method="post">
+            <label for="quarter">Quarter:</label>
+            <select id="quarter" name="quarter" required>
+                <option value="quarter_1">Quarter 1</option>
+                <option value="quarter_2">Quarter 2</option>
+                <option value="quarter_3">Quarter 3</option>
+                <option value="quarter_4">Quarter 4</option>
+                <option value="quarter_5">Quarter 5</option>
+            </select>
+
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="sewing">Sewing</option>
+                <option value="finishing">Cleaning</option>
+                <option value="finishing">Laundering</option>
+                <option value="finishing">Minning</option>
+            </select>
+
+            <label for="day">Day:</label>
+            <select id="day" name="day" required>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+            </select>
+
+            <label for="team">Team:</label>
+            <input type="number" id="team" name="team" required min="1" max="12"><br>
+
+            <label for="targeted_productivity">Targeted Productivity (e.g., 0.8):</label>
+            <input type="number" step="0.01" id="targeted_productivity" name="targeted_productivity" required min="0" max="1"><br>
+
+            <label for="smv">SMV (Standard Minute Value):</label>
+            <input type="number" step="0.01" id="smv" name="smv" required min="0"><br>
+
+            <label for="incentive">Incentive:</label>
+            <input type="number" step="0.01" id="incentive" name="incentive" required min="0"><br>
+
+            <label for="over_time">Over Time (minutes):</label>
+            <input type="number" step="0.01" id="over_time" name="over_time" required min="0"><br>
+
+            <label for="idle_time">Idle Time (minutes):</label>
+            <input type="number" step="0.01" id="idle_time" name="idle_time" required min="0"><br>
+
+            <label for="idle_men">Idle Men:</label>
+            <input type="number" step="0.01" id="idle_men" name="idle_men" required min="0"><br>
+
+            <label for="no_of_style_change">No of Style Change:</label>
+            <input type="number" id="no_of_style_change" name="no_of_style_change" required min="0"><br>
+
+            <label for="no_of_workers">No of Workers:</label>
+            <input type="number" step="0.01" id="no_of_workers" name="no_of_workers" required min="1"><br>
+
+            <label for="month">Month (1-12):</label>
+            <input type="number" id="month" name="month" required min="1" max="12"><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
